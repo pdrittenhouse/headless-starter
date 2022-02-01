@@ -1,0 +1,35 @@
+// CSS variables
+// @link https://www.freecodecamp.org/news/everything-you-need-to-know-about-css-variables-c74d922ea855/
+
+:root {
+
+}
+
+// Colors
+@each $name, $variantList in $c-palette {
+  @each $variant, $color in $variantList {
+    @if ($variant == 'base') {
+      :root {
+        --#{'' + $name}: #{$color};
+      }
+    } @else {
+      :root {
+        --#{'' + $name}-#{$variant}: #{$color};
+      }
+    }
+  }
+}
+
+// Breakpoints
+@each $name, $width in $grid-breakpoints {
+  :root {
+    --#{$name}: #{$width};
+  }
+}
+
+// Fonts
+@each $name, $font in $font-stacks {
+  :root {
+    --#{$name}: #{$font};
+  }
+}
