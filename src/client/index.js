@@ -1,13 +1,28 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
-import { useMemo } from "react";
+import { useMemo } from "react"
 
 let apolloClient
+
+// let fetchOptions = {}
+
+// if (process.env.NODE_ENV !== 'production') {
+//   const https = require('http')
+//   fetchOptions = { agent: new http.Agent({ rejectUnauthorized: false }) }
+// }
+
+let protocol = ''
+
+if (process.env.NODE_ENV !== 'production') {
+  protocol = 'http'
+} else { 
+  protocol = 'https'
+}
 
 function createApolloClient() {
    return new ApolloClient({
      ssrMode: typeof window === 'undefined', // set to true for SSR
      link: new HttpLink({
-       uri: 'https://headless-starter.local/graphql/',
+       uri: `${protocol}://headless-starter.local/graphql/`
      }),
      cache: new InMemoryCache(),
    });
