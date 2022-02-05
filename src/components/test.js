@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client"
-import { GET_ISSUES } from '../../client/queries'
+import { GET_ISSUES } from '../client/queries'
 import { useState } from "react"
 
 const Test = () => {

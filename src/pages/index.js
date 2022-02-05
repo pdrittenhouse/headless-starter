@@ -1,7 +1,7 @@
 // import { useQuery } from "@apollo/client"
 import { GET_ISSUES } from '../client/queries'
 import { initializeApollo } from '../client'
-import Test from "../components/atoms/test"
+import Test from "../components/test"
 
 const Home = () => {
   // const { loading, error, data } = useQuery(GET_ISSUES)
