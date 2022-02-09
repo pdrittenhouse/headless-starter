@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /* stylelint-disable */
 
 //////////////////////////////////////////
@@ -473,7 +475,7 @@ Font size and line height mixin
   @if $lineHeight != false and unitless($lineHeight) {
     line-height: $lineHeight;
   } @else if $lineHeight != false {
-    line-height: strip-unit($lineHeight / $fontSize);
+    line-height: strip-unit(math.div($lineHeight, $fontSize));
   }
 }
 

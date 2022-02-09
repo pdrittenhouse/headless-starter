@@ -1,6 +1,24 @@
+import { initializeApollo } from '../client'
+import { GET_MENUS } from '../client/queries'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+
+export async function getStaticProps() {
+  const client = initializeApollo()
+
+  // Menus
+  await client.query({
+    query: GET_MENUS,
+  })
+
+  return {
+    props: {
+      initialApolloState: client.cache.extract(),
+    },
+    revalidate: 1,
+  }
+}
 
 const Next = () => {
   return <div className={styles.container}>

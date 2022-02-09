@@ -5,10 +5,8 @@
 // This kind of config is often required prior to importing any libraries
 // (ie Bootstrap Sass), and does not produce any CSS, just variables and maps.
 //
-// This file is provided AUTOMATICALLY to every .scss file on the dependency
-// chain via the configuration of the sass-loader within webpack.config.js.
-// In other words, every .scss within Pattern Lab has `@import 00-protons/variables`
-// silently injected into the first line.
+// This file should be imported into a component ***.module.scss file to used
+// variables, mixins and functions.
 //
 // As long as everything within this files DOES NOT PRINT CSS, there will be
 // no duplicated output. Again, for the people in the back:

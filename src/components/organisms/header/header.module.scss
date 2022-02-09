@@ -1,0 +1,73 @@
+@import '../../../styles/variables';
+
+.siteHeader {
+
+    &Branding {}
+
+    .navbar {
+        display: block;
+        justify-content: unset;
+        flex-wrap: unset;
+        align-items: unset;
+
+        > .container,
+        > .container-fluid {
+            display: block;
+            flex-wrap: unset;
+            align-items: unset;
+            justify-content: unset;
+        }
+
+        &Brand {
+            display: block;
+        }
+    }
+
+    &Navigation {
+        @include media-breakpoint-up(lg) {
+            @include flexbox;
+            @include flex-flow(row nowrap);
+            @include align-items(center);
+        }
+    }
+
+    .navbarCollapse {
+        @include flex(0 0 100%);
+        @include justify-content(center);
+
+        @include media-breakpoint-up(lg) {
+            @include justify-content(flex-end);
+        }
+    }
+
+    .navbarNav {}
+
+    .navLink {
+        color: var(--midnight-blue);
+    }
+
+    .navDropdown {
+        
+        > a {
+            color: var(--midnight-blue);
+        }
+
+        > a,
+        > button {
+            background-color: transparent;
+            border: none;
+            padding: rem-calc(8px);
+        }
+
+        > button {
+
+            &:after {
+                border-top-color: var(--midnight-blue);
+            }
+        }
+    }
+
+    .dropdownItem {
+        color: var(--blue-zodiac);
+    }
+}

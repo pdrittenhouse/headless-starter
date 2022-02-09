@@ -1,21 +1,38 @@
 import { useQuery } from "@apollo/client"
-import { GET_ISSUES } from '../client/queries'
+import { GET_POSTS, GET_ISSUES } from '../client/queries'
 import { useState } from "react"
 
 const Test = () => {
-    const { loading, error, data } = useQuery(GET_ISSUES)
+  // Get Posts
+  const { loading, error, data } = useQuery(GET_POSTS)
+  
+  // Get Issues
+  const { loading: loadingIssues, error: errIssues, data: allIssues } = useQuery(GET_ISSUES)
 
-    if (error) return <div>Error loading players.</div>;
-    if (loading) return <div>Loading</div>;
+  if (error || errIssues) return <div>Error loading players.</div>
+  if (loading || loadingIssues) return <div>Loading</div>
 
-    const [issues, setIssue] = useState(data.issues.edges)
+  // Posts State
+  const [posts, setPosts] = useState(data.posts.edges)
 
-    return <div>
-      {issues.map((issue, key) => (
-            <div key={key}>
-                <h5>{issue.node.title}</h5>
-            </div>
-        ))}
+  // Issues State
+  const [issues, setIssues] = useState(allIssues.issues.edges)
+
+  return <div>
+
+    {/* Posts */}
+    {posts.map((post, key) => (
+      <div key={key}>
+        <h5>{post.node.title}</h5>
+      </div>
+    ))}
+    
+    {/* Issues */}
+    {issues.map((issue, key) => (
+      <div key={key}>
+        <h5>{issue.node.title}</h5>
+      </div>
+    ))}
   </div>
 };
 
